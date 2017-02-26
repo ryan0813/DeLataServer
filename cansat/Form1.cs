@@ -11,9 +11,12 @@ using System.IO.Ports;
 using System.IO;
 
 /*
+ * Baud Rate: Fixed at 9600
  * Required Input Format: Gxxx,Hyy,Izzzz..,
  * Tag: G, H, I,... (Max 10 data)
  * Delimiter: ,
+ * 
+ * Output CSV stored in local folder
  */
 
 namespace cansat
@@ -24,30 +27,15 @@ namespace cansat
         bool comPortSelected = false;
         string comPort;
 
-        // START FRAME
-        //private int startFramePos = 0;
-        //private string startFrameText;
-
-        // STOP FRAME
-        //private int stopFramePos = 0;
-        // private string stopFrameText;
-
-        // DELIMITER
-        //private int delimiterPos = 0;
-        //private string delimiterText;
-
         // INDEX
         private const uint buffer_size = 2048;
         private byte[] rxbuffer = new byte[buffer_size];
-        //private byte previousbyte = 0;
-        //private int rxpos = 0;
+
         private int rx_in = 0;
         private int rx_out = 0;
-
-        //private int AApos = 0;
-        //private int BBpos = 0;
-
+        
         private string filePath = @"data.csv";
+
         public delegate void AddDataDelegate(byte[] data);
         public AddDataDelegate myDelegate;
 
@@ -65,10 +53,7 @@ namespace cansat
             //Initialize a buffer to hold the received data 
             byte[] buffer = new byte[serialPort1.BytesToRead];
             int bytesRead = serialPort1.Read(buffer, 0, buffer.Length);
-
-            //String raw = System.Text.Encoding.UTF8.GetString(buffer);
-            //Console.WriteLine(raw);
-
+            
             int i = 0;
             for (i = 0; i < buffer.Length; i++) {
                 byte rxbyte = buffer[i];
@@ -77,17 +62,12 @@ namespace cansat
                 if (rx_in >= rxbuffer.Length)
                     rx_in = 0;
             }
-            //Console.Write("RX_IN:");
-            //Console.WriteLine(rx_in);
-
+            
             // count the receive bytes
             int size = rx_in - rx_out;
             if (size < 0)
                 size += (int)buffer_size;
-
-            //Console.Write("SIZE:");
-            //Console.WriteLine(size);
-            
+                        
             if (size > 1)
             {
                 // temporary pos
@@ -95,9 +75,6 @@ namespace cansat
                 byte[] line = new byte[size];
                 for (i = 0; i < size; i++)
                 {
-                    //Console.Write("POS:");
-                    //Console.WriteLine(size);
-
                     byte rx = rxbuffer[pos++];
                     if (pos >= buffer_size)
                         pos -= (int)buffer_size;
@@ -110,47 +87,10 @@ namespace cansat
                     {
                         rx_out = pos;
                         this.Invoke(this.myDelegate, line);
-
-                        //Console.WriteLine(BitConverter.ToString(line));
-                        //Console.Write(rx_in); Console.Write("-");
-                        //Console.Write(pos); Console.Write("-");
-                        //Console.WriteLine(rx_out);
-                        //Console.WriteLine(size);
-                        //Console.WriteLine(BitConverter.ToString(line));
-                        //String data = System.Text.Encoding.UTF8.GetString(line);
-
-                        //Console.WriteLine("---");
-                        //Console.WriteLine(data);
                         break;
                     }
-
-                    //Console.Write("RAW:");
-                    //String data = System.Text.Encoding.UTF8.GetString(line);
-                    //Console.WriteLine(data);
-                    //Console.WriteLine(BitConverter.ToString(line));
-
-                    //if (rx == 10) // if has new line
-                    //{
-                    //    String data = System.Text.Encoding.UTF8.GetString(line);
-                    //    Console.WriteLine(data);
-                    //    rx_out = pos;
-                    //    break;
-                    //}
                 }
             }
-            
-            
-
-            /*
-            if (BBpos - AApos == 12) {
-                byte[] line = new byte[10];
-                for (int i = 0; i < line.Length; i++) {
-                    line[i] = rxbuffer[AApos + 1 + i];
-                }
-                
-                this.Invoke(this.myDelegate, line);
-                //Console.WriteLine(BitConverter.ToString(line));
-            }*/
         }
 
         private void AddDataMethod(byte[] line) {
@@ -158,13 +98,11 @@ namespace cansat
 
             String data = System.Text.Encoding.UTF8.GetString(line).TrimEnd('\0');
             File.AppendAllText(filePath, data+"\r\n");
-            //Console.WriteLine(data);
 
             String[] values = data.Split(',');
 
             for (int i = 0; i < values.Length; i++)
             {
-                //Console.WriteLine(values[i]);
                 String value = values[i];
                 switch(value[0])
                 {
@@ -200,22 +138,7 @@ namespace cansat
                         break;
                 }
             }
-            
 
-
-
-           /* int adc1 = (data[0] * 256 + data[1]) / 64;
-            int adc2 = (data[2] * 256 + data[3]) / 64;
-            int adc3 = (data[4] * 256 + data[5]) / 64;
-            int adc4 = (data[6] * 256 + data[7]) / 64;
-            int adc5 = (data[8] * 256 + data[9]) / 64;
-
-            textSensor1.Text = adc1.ToString();
-            textSensor2.Text = adc2.ToString();
-            textSensor3.Text = adc3.ToString();
-            textSensor4.Text = adc4.ToString();
-            textSensor5.Text = adc5.ToString();*/
-            
             textUpdated.Text = DateTime.Now.ToString();
         }
 
@@ -235,12 +158,9 @@ namespace cansat
 
         /* Check Requirements Before Proceeding */
         private void btnStartClick(object sender, EventArgs e) {
-            if (!comPortSelected /*|| textStartFrame.Text.Length <= 0 || textStopFrame.Text.Length <= 0 || textDelimiter.Text.Length <= 0*/) {
-                MessageBox.Show("Please complete all fields.");
+            if (!comPortSelected) {
+                MessageBox.Show("Please select a COM PORT.");
             } else {
-                //startFrameText = textStartFrame.Text.ToString();
-                //stopFrameText = textStopFrame.Text.ToString();
-                //delimiterText = textDelimiter.Text.ToString();
                 Open();
             }
         }
