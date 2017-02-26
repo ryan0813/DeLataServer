@@ -10,9 +10,8 @@ using System.Windows.Forms;
 using System.IO.Ports;
 
 /*
- * Required Input Format: AAxxx,yy,zz..,BB
- * Start Frame: AA
- * End Frame: BB
+ * Required Input Format: Gxxx,Hyy,Izzzz..,
+ * Tag: G, H, I,...
  * Delimiter: ,
  */
 
@@ -25,25 +24,27 @@ namespace cansat
         string comPort;
 
         // START FRAME
-        private int startFramePos = 0;
-        private string startFrameText;
+        //private int startFramePos = 0;
+        //private string startFrameText;
 
         // STOP FRAME
-        private int stopFramePos = 0;
-        private string stopFrameText;
+        //private int stopFramePos = 0;
+        // private string stopFrameText;
 
         // DELIMITER
-        private int delimiterPos = 0;
-        private string delimiterText;
+        //private int delimiterPos = 0;
+        //private string delimiterText;
 
         // INDEX
-        private byte[] rxbuffer = new byte[256];
-        private byte previousbyte = 0;
-        private int rxpos = 0;
+        private const uint buffer_size = 2048;
+        private byte[] rxbuffer = new byte[buffer_size];
+        //private byte previousbyte = 0;
+        //private int rxpos = 0;
+        private int rx_in = 0;
+        private int rx_out = 0;
 
-        /*@TODO OLD - For removing */
-        private int AApos = 0;
-        private int BBpos = 0;
+        //private int AApos = 0;
+        //private int BBpos = 0;
 
         public delegate void AddDataDelegate(byte[] data);
         public AddDataDelegate myDelegate;
@@ -63,30 +64,89 @@ namespace cansat
             byte[] buffer = new byte[serialPort1.BytesToRead];
             int bytesRead = serialPort1.Read(buffer, 0, buffer.Length);
 
-            for (int i = 0; i < buffer.Length; i++) {
+            //String raw = System.Text.Encoding.UTF8.GetString(buffer);
+            //Console.WriteLine(raw);
+
+            int i = 0;
+            for (i = 0; i < buffer.Length; i++) {
                 byte rxbyte = buffer[i];
 
-                if (previousbyte == 65 && rxbyte == 65)
-                    AApos = rxpos;
+                rxbuffer[rx_in++] = rxbyte;
+                if (rx_in >= rxbuffer.Length)
+                    rx_in = 0;
+            }
+            //Console.Write("RX_IN:");
+            //Console.WriteLine(rx_in);
 
-                if (previousbyte == 66 && rxbyte == 66)
-                    BBpos = rxpos;
+            // count the receive bytes
+            int size = rx_in - rx_out;
+            if (size < 0)
+                size += (int)buffer_size;
 
-                rxbuffer[rxpos++] = rxbyte;
-                if (rxpos >= rxbuffer.Length) rxpos = 0;
+            //Console.Write("SIZE:");
+            //Console.WriteLine(size);
+            
+            if (size > 1)
+            {
+                // temporary pos
+                int pos = rx_out;
+                byte[] line = new byte[size];
+                for (i = 0; i < size; i++)
+                {
+                    //Console.Write("POS:");
+                    //Console.WriteLine(size);
 
-                previousbyte = rxbyte; 
+                    byte rx = rxbuffer[pos++];
+                    if (pos >= buffer_size)
+                        pos -= (int)buffer_size;
+
+                    if (rx > 32)
+                    { // if readable character
+                        line[i] = rx;
+                    }
+                    else 
+                    {
+                        rx_out = pos;
+
+                        //Console.Write(rx_in); Console.Write("-");
+                        //Console.Write(pos); Console.Write("-");
+                        //Console.WriteLine(rx_out);
+                        //Console.WriteLine(size);
+                        Console.WriteLine(BitConverter.ToString(line));
+                        String data = System.Text.Encoding.UTF8.GetString(line);
+
+                        Console.WriteLine("---");
+                        Console.WriteLine(data);
+                        break;
+                    }
+
+                    //Console.Write("RAW:");
+                    //String data = System.Text.Encoding.UTF8.GetString(line);
+                    //Console.WriteLine(data);
+                    //Console.WriteLine(BitConverter.ToString(line));
+
+                    //if (rx == 10) // if has new line
+                    //{
+                    //    String data = System.Text.Encoding.UTF8.GetString(line);
+                    //    Console.WriteLine(data);
+                    //    rx_out = pos;
+                    //    break;
+                    //}
+                }
             }
             
+            
+
+            /*
             if (BBpos - AApos == 12) {
                 byte[] line = new byte[10];
                 for (int i = 0; i < line.Length; i++) {
                     line[i] = rxbuffer[AApos + 1 + i];
                 }
-
+                
                 this.Invoke(this.myDelegate, line);
                 //Console.WriteLine(BitConverter.ToString(line));
-            }
+            }*/
         }
 
         private void AddDataMethod(byte[] data) {
@@ -123,12 +183,12 @@ namespace cansat
 
         /* Check Requirements Before Proceeding */
         private void btnStartClick(object sender, EventArgs e) {
-            if (!comPortSelected || textStartFrame.Text.Length <= 0 || textStopFrame.Text.Length <= 0 || textDelimiter.Text.Length <= 0) {
+            if (!comPortSelected /*|| textStartFrame.Text.Length <= 0 || textStopFrame.Text.Length <= 0 || textDelimiter.Text.Length <= 0*/) {
                 MessageBox.Show("Please complete all fields.");
             } else {
-                startFrameText = textStartFrame.Text.ToString();
-                stopFrameText = textStopFrame.Text.ToString();
-                delimiterText = textDelimiter.Text.ToString();
+                //startFrameText = textStartFrame.Text.ToString();
+                //stopFrameText = textStopFrame.Text.ToString();
+                //delimiterText = textDelimiter.Text.ToString();
                 Open();
             }
         }
