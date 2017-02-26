@@ -9,6 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 
+/*
+ * Required Input Format: AAxxx,yy,zz..,BB
+ * Start Frame: AA
+ * End Frame: BB
+ * Delimiter: ,
+ */
+
 namespace cansat
 {
     public partial class Form1 : Form
