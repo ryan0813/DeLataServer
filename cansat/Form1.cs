@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
 
 /*
  * Required Input Format: Gxxx,Hyy,Izzzz..,
- * Tag: G, H, I,...
+ * Tag: G, H, I,... (Max 10 data)
  * Delimiter: ,
  */
 
@@ -46,6 +47,7 @@ namespace cansat
         //private int AApos = 0;
         //private int BBpos = 0;
 
+        private string filePath = @"data.csv";
         public delegate void AddDataDelegate(byte[] data);
         public AddDataDelegate myDelegate;
 
@@ -107,16 +109,18 @@ namespace cansat
                     else 
                     {
                         rx_out = pos;
+                        this.Invoke(this.myDelegate, line);
 
+                        //Console.WriteLine(BitConverter.ToString(line));
                         //Console.Write(rx_in); Console.Write("-");
                         //Console.Write(pos); Console.Write("-");
                         //Console.WriteLine(rx_out);
                         //Console.WriteLine(size);
-                        Console.WriteLine(BitConverter.ToString(line));
-                        String data = System.Text.Encoding.UTF8.GetString(line);
+                        //Console.WriteLine(BitConverter.ToString(line));
+                        //String data = System.Text.Encoding.UTF8.GetString(line);
 
-                        Console.WriteLine("---");
-                        Console.WriteLine(data);
+                        //Console.WriteLine("---");
+                        //Console.WriteLine(data);
                         break;
                     }
 
@@ -149,10 +153,58 @@ namespace cansat
             }*/
         }
 
-        private void AddDataMethod(byte[] data) {
+        private void AddDataMethod(byte[] line) {
             textPower.BackColor = Color.LimeGreen;
 
-            int adc1 = (data[0] * 256 + data[1]) / 64;
+            String data = System.Text.Encoding.UTF8.GetString(line).TrimEnd('\0');
+            File.AppendAllText(filePath, data+"\r\n");
+            //Console.WriteLine(data);
+
+            String[] values = data.Split(',');
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                //Console.WriteLine(values[i]);
+                String value = values[i];
+                switch(value[0])
+                {
+                    case 'G':
+                        textSensor1.Text = values[i].Substring(1);
+                        break;
+                    case 'H':
+                        textSensor2.Text = values[i].Substring(1);
+                        break;
+                    case 'I':
+                        textSensor3.Text = values[i].Substring(1);
+                        break;
+                    case 'J':
+                        textSensor4.Text = values[i].Substring(1);
+                        break;
+                    case 'K':
+                        textSensor5.Text = values[i].Substring(1);
+                        break;
+                    case 'L':
+                        textSensor6.Text = values[i].Substring(1);
+                        break;
+                    case 'M':
+                        textSensor7.Text = values[i].Substring(1);
+                        break;
+                    case 'N':
+                        textSensor8.Text = values[i].Substring(1);
+                        break;
+                    case 'O':
+                        textSensor9.Text = values[i].Substring(1);
+                        break;
+                    case 'P':
+                        textSensor10.Text = values[i].Substring(1);
+                        break;
+                }
+            }
+            
+
+
+
+           /* int adc1 = (data[0] * 256 + data[1]) / 64;
             int adc2 = (data[2] * 256 + data[3]) / 64;
             int adc3 = (data[4] * 256 + data[5]) / 64;
             int adc4 = (data[6] * 256 + data[7]) / 64;
@@ -162,7 +214,7 @@ namespace cansat
             textSensor2.Text = adc2.ToString();
             textSensor3.Text = adc3.ToString();
             textSensor4.Text = adc4.ToString();
-            textSensor5.Text = adc5.ToString();
+            textSensor5.Text = adc5.ToString();*/
             
             textUpdated.Text = DateTime.Now.ToString();
         }
