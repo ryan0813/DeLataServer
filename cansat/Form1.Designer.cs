@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.textPower = new System.Windows.Forms.TextBox();
             this.labelPower = new System.Windows.Forms.Label();
@@ -61,8 +62,11 @@
             this.comboPort = new System.Windows.Forms.ComboBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.labelPort = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -117,7 +121,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(427, 727);
+            this.groupBox1.Size = new System.Drawing.Size(427, 656);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sensor Values";
@@ -230,12 +234,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(143, 627);
+            this.label8.Location = new System.Drawing.Point(19, 612);
             this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 25);
+            this.label8.Size = new System.Drawing.Size(93, 25);
             this.label8.TabIndex = 26;
-            this.label8.Text = "Last Updated";
+            this.label8.Text = "Updated";
             // 
             // labelReceived
             // 
@@ -250,12 +254,12 @@
             // textUpdated
             // 
             this.textUpdated.BackColor = System.Drawing.SystemColors.Control;
-            this.textUpdated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textUpdated.Location = new System.Drawing.Point(60, 670);
+            this.textUpdated.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textUpdated.Location = new System.Drawing.Point(116, 614);
             this.textUpdated.Margin = new System.Windows.Forms.Padding(6);
             this.textUpdated.Name = "textUpdated";
             this.textUpdated.ReadOnly = true;
-            this.textUpdated.Size = new System.Drawing.Size(302, 31);
+            this.textUpdated.Size = new System.Drawing.Size(260, 24);
             this.textUpdated.TabIndex = 22;
             // 
             // textSensor2
@@ -422,20 +426,45 @@
             this.labelPort.TabIndex = 30;
             this.labelPort.Text = "COM Port";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 451);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(410, 137);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.AllowDrop = true;
+            this.label13.Location = new System.Drawing.Point(18, 611);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(410, 60);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "ECE 197S: Introduction to Satellite and Space Systems Engineering";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 789);
+            this.ClientSize = new System.Drawing.Size(879, 690);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupSettings);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(6);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Cansat Server";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupSettings.ResumeLayout(false);
             this.groupSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -474,6 +503,8 @@
         private System.Windows.Forms.TextBox textSensor8;
         private System.Windows.Forms.TextBox textSensor7;
         private System.Windows.Forms.TextBox textSensor6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label13;
     }
 }
 
