@@ -96,8 +96,11 @@ namespace cansat
         private void AddDataMethod(byte[] line) {
             textPower.BackColor = Color.LimeGreen;
 
+            String now = DateTime.Now.ToString();
+            textUpdated.Text = now;
+
             String data = System.Text.Encoding.UTF8.GetString(line).TrimEnd('\0');
-            File.AppendAllText(filePath, data+"\r\n");
+            File.AppendAllText(filePath, now + ","+ data + "\r\n");
 
             String[] values = data.Split(',');
 
@@ -138,8 +141,6 @@ namespace cansat
                         break;
                 }
             }
-
-            textUpdated.Text = DateTime.Now.ToString();
         }
 
         /*************************************************************************
