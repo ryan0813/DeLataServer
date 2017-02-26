@@ -58,12 +58,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.groupSettings = new System.Windows.Forms.GroupBox();
-            this.textDelimiter = new System.Windows.Forms.TextBox();
-            this.textStopFrame = new System.Windows.Forms.TextBox();
-            this.textStartFrame = new System.Windows.Forms.TextBox();
-            this.labelStop = new System.Windows.Forms.Label();
-            this.labelDelimiter = new System.Windows.Forms.Label();
-            this.labelStart = new System.Windows.Forms.Label();
             this.comboPort = new System.Windows.Forms.ComboBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.labelPort = new System.Windows.Forms.Label();
@@ -123,7 +117,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(427, 761);
+            this.groupBox1.Size = new System.Drawing.Size(427, 727);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sensor Values";
@@ -236,7 +230,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(143, 663);
+            this.label8.Location = new System.Drawing.Point(143, 627);
             this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(140, 25);
@@ -257,7 +251,7 @@
             // 
             this.textUpdated.BackColor = System.Drawing.SystemColors.Control;
             this.textUpdated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textUpdated.Location = new System.Drawing.Point(60, 706);
+            this.textUpdated.Location = new System.Drawing.Point(60, 670);
             this.textUpdated.Margin = new System.Windows.Forms.Padding(6);
             this.textUpdated.Name = "textUpdated";
             this.textUpdated.ReadOnly = true;
@@ -383,12 +377,6 @@
             // 
             // groupSettings
             // 
-            this.groupSettings.Controls.Add(this.textDelimiter);
-            this.groupSettings.Controls.Add(this.textStopFrame);
-            this.groupSettings.Controls.Add(this.textStartFrame);
-            this.groupSettings.Controls.Add(this.labelStop);
-            this.groupSettings.Controls.Add(this.labelDelimiter);
-            this.groupSettings.Controls.Add(this.labelStart);
             this.groupSettings.Controls.Add(this.comboPort);
             this.groupSettings.Controls.Add(this.btnConnect);
             this.groupSettings.Controls.Add(this.labelPort);
@@ -398,70 +386,10 @@
             this.groupSettings.Margin = new System.Windows.Forms.Padding(6);
             this.groupSettings.Name = "groupSettings";
             this.groupSettings.Padding = new System.Windows.Forms.Padding(6);
-            this.groupSettings.Size = new System.Drawing.Size(410, 429);
+            this.groupSettings.Size = new System.Drawing.Size(410, 248);
             this.groupSettings.TabIndex = 29;
             this.groupSettings.TabStop = false;
             this.groupSettings.Text = "Settings";
-            // 
-            // textDelimiter
-            // 
-            this.textDelimiter.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textDelimiter.Location = new System.Drawing.Point(154, 293);
-            this.textDelimiter.Margin = new System.Windows.Forms.Padding(6);
-            this.textDelimiter.Name = "textDelimiter";
-            this.textDelimiter.Size = new System.Drawing.Size(225, 31);
-            this.textDelimiter.TabIndex = 37;
-            this.textDelimiter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textStopFrame
-            // 
-            this.textStopFrame.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textStopFrame.Location = new System.Drawing.Point(154, 240);
-            this.textStopFrame.Margin = new System.Windows.Forms.Padding(6);
-            this.textStopFrame.Name = "textStopFrame";
-            this.textStopFrame.Size = new System.Drawing.Size(225, 31);
-            this.textStopFrame.TabIndex = 36;
-            this.textStopFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textStartFrame
-            // 
-            this.textStartFrame.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.textStartFrame.Location = new System.Drawing.Point(154, 186);
-            this.textStartFrame.Margin = new System.Windows.Forms.Padding(6);
-            this.textStartFrame.Name = "textStartFrame";
-            this.textStartFrame.Size = new System.Drawing.Size(225, 31);
-            this.textStartFrame.TabIndex = 35;
-            this.textStartFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelStop
-            // 
-            this.labelStop.AutoSize = true;
-            this.labelStop.Location = new System.Drawing.Point(13, 246);
-            this.labelStop.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelStop.Name = "labelStop";
-            this.labelStop.Size = new System.Drawing.Size(129, 25);
-            this.labelStop.TabIndex = 34;
-            this.labelStop.Text = "Stop Frame:";
-            // 
-            // labelDelimiter
-            // 
-            this.labelDelimiter.AutoSize = true;
-            this.labelDelimiter.Location = new System.Drawing.Point(12, 296);
-            this.labelDelimiter.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelDelimiter.Name = "labelDelimiter";
-            this.labelDelimiter.Size = new System.Drawing.Size(102, 25);
-            this.labelDelimiter.TabIndex = 32;
-            this.labelDelimiter.Text = "Delimiter:";
-            // 
-            // labelStart
-            // 
-            this.labelStart.AutoSize = true;
-            this.labelStart.Location = new System.Drawing.Point(12, 192);
-            this.labelStart.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelStart.Name = "labelStart";
-            this.labelStart.Size = new System.Drawing.Size(130, 25);
-            this.labelStart.TabIndex = 33;
-            this.labelStart.Text = "Start Frame:";
             // 
             // comboPort
             // 
@@ -475,7 +403,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(130, 363);
+            this.btnConnect.Location = new System.Drawing.Point(130, 182);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(6);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(150, 44);
@@ -536,17 +464,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.ComboBox comboPort;
-        private System.Windows.Forms.Label labelDelimiter;
-        private System.Windows.Forms.TextBox textStopFrame;
-        private System.Windows.Forms.TextBox textStartFrame;
-        private System.Windows.Forms.Label labelStop;
-        private System.Windows.Forms.Label labelStart;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textDelimiter;
         private System.Windows.Forms.TextBox textSensor10;
         private System.Windows.Forms.TextBox textSensor9;
         private System.Windows.Forms.TextBox textSensor8;
