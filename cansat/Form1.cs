@@ -12,8 +12,10 @@ using System.IO;
 
 /*
  * Baud Rate: Fixed at 9600
- * Required Input Format: Gxxx,Hyy,Izzzz..,
- * Tag: G, H, I,... (Max 10 data)
+ * Required Input Format: 
+ * G<TeamID>,H<PacketCnt>,I<GPSTime>,J<Fix>,K<Lat>,L<Lon>,M<Speed>,N<Angle>,O<Alt>,P<Sat>,Q<D1>,R<D2>,S<D3>,...,X<D8>,Y<D9>,Z<D10>
+ * Tag: G, H, I,...X, Y, Z
+ * Tags Q to Z are for sensor data (can be removed if not needed)
  * Delimiter: ,
  * 
  * Output CSV stored in local folder
@@ -42,6 +44,9 @@ namespace cansat
         public Form1()
         {
             InitializeComponent();
+            File.AppendAllText(filePath, "PC Time, Team ID, Packet Count, GPS Time, Fix, Latitude, Longitude, Speed, Angle," +
+                "Altitude, No. of Satellites, Data1, Data2, Data3, Data4, Data5, Data6, Data7, Data8, Data9, Data10" + "\r\n");
+
             string[] ports = SerialPort.GetPortNames();
             
             comboPort.Items.AddRange(ports);
@@ -100,47 +105,141 @@ namespace cansat
             textUpdated.Text = now;
 
             String data = System.Text.Encoding.UTF8.GetString(line).TrimEnd('\0');
-            File.AppendAllText(filePath, now + ","+ data + "\r\n");
+            //File.AppendAllText(filePath, now + ","+ data + "\r\n");
+            File.AppendAllText(filePath, now + ",");
 
             String[] values = data.Split(',');
 
+            String temp;
             for (int i = 0; i < values.Length; i++)
             {
                 String value = values[i];
                 switch(value[0])
                 {
                     case 'G':
-                        textSensor1.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textTID.Text = temp;
+                        //textTID.Text = values[i].Substring(1);
                         break;
                     case 'H':
-                        textSensor2.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textPacket.Text = temp;
+                        //textPacket.Text = values[i].Substring(1);
                         break;
                     case 'I':
-                        textSensor3.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGTime.Text = temp;
+                        //textGTime.Text = values[i].Substring(1);
                         break;
                     case 'J':
-                        textSensor4.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGFix.Text = temp;
+                        //textGFix.Text = values[i].Substring(1);
                         break;
                     case 'K':
-                        textSensor5.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGLat.Text = temp;
+                        //textGLat.Text = values[i].Substring(1);
                         break;
                     case 'L':
-                        textSensor6.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGLong.Text = temp;
+                        //textGLong.Text = values[i].Substring(1);
                         break;
                     case 'M':
-                        textSensor7.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGSpeed.Text = temp;
+                        //textGSpeed.Text = values[i].Substring(1);
                         break;
                     case 'N':
-                        textSensor8.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGAngle.Text = temp;
+                        //textGAngle.Text = values[i].Substring(1);
                         break;
                     case 'O':
-                        textSensor9.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGAlt.Text = temp;
+                        //textGAlt.Text = values[i].Substring(1);
                         break;
                     case 'P':
-                        textSensor10.Text = values[i].Substring(1);
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textGSat.Text = temp;
+                        //textGSat.Text = values[i].Substring(1);
+                        break;
+                    case 'Q':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor1.Text = temp;
+                        //textSensor1.Text = values[i].Substring(1);
+                        break;
+                    case 'R':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor2.Text = temp;
+                        //textSensor2.Text = values[i].Substring(1);
+                        break;
+                    case 'S':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor3.Text = temp;
+                        //textSensor3.Text = values[i].Substring(1);
+                        break;
+                    case 'T':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor4.Text = temp;
+                        textSensor4.Text = values[i].Substring(1);
+                        break;
+                    case 'U':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor5.Text = temp;
+                        //textSensor5.Text = values[i].Substring(1);
+                        break;
+                    case 'V':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor6.Text = temp;
+                        //textSensor6.Text = values[i].Substring(1);
+                        break;
+                    case 'W':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor7.Text = temp;
+                        //textSensor7.Text = values[i].Substring(1);
+                        break;
+                    case 'X':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor8.Text = temp;
+                        //textSensor8.Text = values[i].Substring(1);
+                        break;
+                    case 'Y':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor9.Text = temp;
+                        //textSensor9.Text = values[i].Substring(1);
+                        break;
+                    case 'Z':
+                        temp = values[i].Substring(1);
+                        File.AppendAllText(filePath, temp + ",");
+                        textSensor10.Text = temp;
+                        //textSensor10.Text = values[i].Substring(1);
                         break;
                 }
+                
             }
+            File.AppendAllText(filePath, "," + "\r\n");
         }
 
         /*************************************************************************

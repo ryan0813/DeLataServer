@@ -64,9 +64,33 @@
             this.labelPort = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textPacket = new System.Windows.Forms.TextBox();
+            this.textTID = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.textGSat = new System.Windows.Forms.TextBox();
+            this.textGAlt = new System.Windows.Forms.TextBox();
+            this.textGAngle = new System.Windows.Forms.TextBox();
+            this.textGSpeed = new System.Windows.Forms.TextBox();
+            this.textGLong = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textGTime = new System.Windows.Forms.TextBox();
+            this.textGFix = new System.Windows.Forms.TextBox();
+            this.textGLat = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialPort1
@@ -117,7 +141,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(437, 15);
+            this.groupBox1.Location = new System.Drawing.Point(888, 15);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
@@ -446,11 +470,263 @@
             this.label13.TabIndex = 31;
             this.label13.Text = "ECE 197S: Introduction to Satellite and Space Systems Engineering";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textPacket);
+            this.groupBox2.Controls.Add(this.textTID);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Location = new System.Drawing.Point(443, 16);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox2.Size = new System.Drawing.Size(427, 170);
+            this.groupBox2.TabIndex = 32;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Mission Info";
+            // 
+            // textPacket
+            // 
+            this.textPacket.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textPacket.Location = new System.Drawing.Point(226, 104);
+            this.textPacket.Margin = new System.Windows.Forms.Padding(6);
+            this.textPacket.Name = "textPacket";
+            this.textPacket.ReadOnly = true;
+            this.textPacket.Size = new System.Drawing.Size(138, 31);
+            this.textPacket.TabIndex = 13;
+            this.textPacket.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textTID
+            // 
+            this.textTID.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textTID.Location = new System.Drawing.Point(226, 54);
+            this.textTID.Margin = new System.Windows.Forms.Padding(6);
+            this.textTID.Name = "textTID";
+            this.textTID.ReadOnly = true;
+            this.textTID.Size = new System.Drawing.Size(138, 31);
+            this.textTID.TabIndex = 3;
+            this.textTID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(49, 107);
+            this.label21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(141, 25);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Packet Count";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(49, 57);
+            this.label25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(92, 25);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Team ID";
+            // 
+            // textGSat
+            // 
+            this.textGSat.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGSat.Location = new System.Drawing.Point(168, 414);
+            this.textGSat.Margin = new System.Windows.Forms.Padding(6);
+            this.textGSat.Name = "textGSat";
+            this.textGSat.ReadOnly = true;
+            this.textGSat.Size = new System.Drawing.Size(196, 31);
+            this.textGSat.TabIndex = 36;
+            this.textGSat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textGAlt
+            // 
+            this.textGAlt.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGAlt.Location = new System.Drawing.Point(168, 360);
+            this.textGAlt.Margin = new System.Windows.Forms.Padding(6);
+            this.textGAlt.Name = "textGAlt";
+            this.textGAlt.ReadOnly = true;
+            this.textGAlt.Size = new System.Drawing.Size(196, 31);
+            this.textGAlt.TabIndex = 35;
+            this.textGAlt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textGAngle
+            // 
+            this.textGAngle.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGAngle.Location = new System.Drawing.Point(168, 309);
+            this.textGAngle.Margin = new System.Windows.Forms.Padding(6);
+            this.textGAngle.Name = "textGAngle";
+            this.textGAngle.ReadOnly = true;
+            this.textGAngle.Size = new System.Drawing.Size(196, 31);
+            this.textGAngle.TabIndex = 34;
+            this.textGAngle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textGSpeed
+            // 
+            this.textGSpeed.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGSpeed.Location = new System.Drawing.Point(168, 256);
+            this.textGSpeed.Margin = new System.Windows.Forms.Padding(6);
+            this.textGSpeed.Name = "textGSpeed";
+            this.textGSpeed.ReadOnly = true;
+            this.textGSpeed.Size = new System.Drawing.Size(196, 31);
+            this.textGSpeed.TabIndex = 33;
+            this.textGSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textGLong
+            // 
+            this.textGLong.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGLong.Location = new System.Drawing.Point(168, 202);
+            this.textGLong.Margin = new System.Windows.Forms.Padding(6);
+            this.textGLong.Name = "textGLong";
+            this.textGLong.ReadOnly = true;
+            this.textGLong.Size = new System.Drawing.Size(196, 31);
+            this.textGLong.TabIndex = 32;
+            this.textGLong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(51, 417);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(100, 25);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Satellites";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(51, 366);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(84, 25);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Altitude";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(51, 315);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 25);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "Angle";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(51, 262);
+            this.label17.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 25);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Speed";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(51, 208);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(107, 25);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Longitude";
+            // 
+            // textGTime
+            // 
+            this.textGTime.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGTime.Location = new System.Drawing.Point(168, 50);
+            this.textGTime.Margin = new System.Windows.Forms.Padding(6);
+            this.textGTime.Name = "textGTime";
+            this.textGTime.ReadOnly = true;
+            this.textGTime.Size = new System.Drawing.Size(196, 31);
+            this.textGTime.TabIndex = 12;
+            this.textGTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textGFix
+            // 
+            this.textGFix.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGFix.Location = new System.Drawing.Point(168, 100);
+            this.textGFix.Margin = new System.Windows.Forms.Padding(6);
+            this.textGFix.Name = "textGFix";
+            this.textGFix.ReadOnly = true;
+            this.textGFix.Size = new System.Drawing.Size(196, 31);
+            this.textGFix.TabIndex = 11;
+            this.textGFix.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textGLat
+            // 
+            this.textGLat.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.textGLat.Location = new System.Drawing.Point(168, 150);
+            this.textGLat.Margin = new System.Windows.Forms.Padding(6);
+            this.textGLat.Name = "textGLat";
+            this.textGLat.ReadOnly = true;
+            this.textGLat.Size = new System.Drawing.Size(196, 31);
+            this.textGLat.TabIndex = 10;
+            this.textGLat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(51, 51);
+            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(59, 25);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Time";
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(51, 103);
+            this.label.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(41, 25);
+            this.label.TabIndex = 2;
+            this.label.Text = "Fix";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(51, 155);
+            this.label24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(89, 25);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Latitude";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textGSat);
+            this.groupBox3.Controls.Add(this.textGTime);
+            this.groupBox3.Controls.Add(this.textGFix);
+            this.groupBox3.Controls.Add(this.textGAlt);
+            this.groupBox3.Controls.Add(this.textGLat);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.textGAngle);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.textGSpeed);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.label);
+            this.groupBox3.Controls.Add(this.textGLong);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Location = new System.Drawing.Point(443, 197);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(427, 474);
+            this.groupBox3.TabIndex = 37;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "GPS Data";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 690);
+            this.ClientSize = new System.Drawing.Size(1946, 690);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupSettings);
@@ -465,6 +741,10 @@
             this.groupSettings.ResumeLayout(false);
             this.groupSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -505,6 +785,28 @@
         private System.Windows.Forms.TextBox textSensor6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textPacket;
+        private System.Windows.Forms.TextBox textTID;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textGSat;
+        private System.Windows.Forms.TextBox textGAlt;
+        private System.Windows.Forms.TextBox textGAngle;
+        private System.Windows.Forms.TextBox textGSpeed;
+        private System.Windows.Forms.TextBox textGLong;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textGTime;
+        private System.Windows.Forms.TextBox textGFix;
+        private System.Windows.Forms.TextBox textGLat;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 
